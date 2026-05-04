@@ -1,0 +1,55 @@
+* {
+    margin:0;
+    padding:0;
+    user-select:none;
+}
+
+body {
+    background-color:#000080;
+    font-family:"Arimo", sans-serif;
+}
+
+#ticket {
+    background-color:black;
+    width:300px;
+    color:white;
+    text-align:center;
+    padding:20px;
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:15px;
+    top:15px;
+}
+
+#shownValue {
+    position:fixed;
+    top:15px;
+    right:15px;
+}
+
+hr {
+    background-color:white;
+    border:transparent solid 1px;
+}
+
+.winningNumber {
+    display:inline-block;
+    width:50px;
+}
+
+.ticketCell {
+    background-color:rgb(200, 200, 255);
+    width:50px;
+    height:50px;
+    border:transparent solid 1px;
+    margin:5px;
+    border-radius:5px;
+    cursor:pointer;
+    color:white;
+    line-height:50px;
+}
+
+.ticketCell:hover {
+    background-color:rgb(180,180,255);
+}
