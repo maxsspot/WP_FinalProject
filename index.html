@@ -6,13 +6,16 @@
         <link rel="stylesheet" href="index.css">
         <title>Final Project - Scratcher Ticket</title>
     </head>
-    <body onload="makeWinningNumbers();makeButtons();assignEvents();updateMoney()">
+    <body onload="winStreakBar();makeWinningNumbers();makeTicket();assignEvents();updateMoney()">
         <div id="overlay"></div>
+        <div id="winStreak">
+            <div id="greenBar"></div>
+        </div>
         <div id="ticket">
             <br>
             <p id="shownValue">$<span id="ticketValue">5</span></p>
-            <h1 id="title">Title</h1><br>
-            <p>Description</p>
+            <h1 id="title">Scratcher</h1><br>
+            <p>Find the winning numbers, and recieve the prize shown under that number!</p>
             <br><hr><br>
             <p>Winning Numbers</p><br>
             <div id="winNumberZone">

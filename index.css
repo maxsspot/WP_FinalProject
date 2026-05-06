@@ -33,7 +33,7 @@ button {
     text-align:center;
     line-height:35px;
 }
-#ticket {
+#ticket, #winStreak {
     background-color:black;
     width:300px;
     color:white;
@@ -44,8 +44,24 @@ button {
     transform:translateX(-50%);
     border-radius:15px;
     top:15px;
+    border:transparent solid 5px;
+    transition:all 0.5s;
 }
-
+#ticket {
+    top:75px;
+}
+#winStreak, #greenBar {
+    height:40px;
+    padding:0px;
+    width:340px;
+    border-radius:15px;
+}
+#greenBar {
+    background-color:green;
+    text-align:center;
+    line-height:40px;
+    width:0%;
+}
 #refreshGame {
     background-color:rgb(200, 200, 255);
     width:120px;
@@ -55,7 +71,7 @@ button {
     position:fixed;
     left:50%;
     transform:translateX(-50%);
-    top:420px;
+    top:500px;
     opacity:0;
     transition:all 0.5s;
     pointer-events:none;
@@ -78,6 +94,19 @@ hr {
 .winningNumber {
     display:inline-block;
     width:50px;
+}
+
+#cell0 {
+    border-radius:15px 0px 0px 0px;
+}
+#cell4 {
+    border-radius:0px 15px 0px 0px;
+}
+#cell5 {
+    border-radius:0px 0px 0px 15px;
+}
+#cell9 {
+    border-radius:0px 0px 15px 0px;
 }
 
 .ticketCell {
