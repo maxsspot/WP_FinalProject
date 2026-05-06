@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
         <title>Final Project - Scratcher Ticket</title>
     </head>
-    <body onload="makeWinningNumbers();makeButtons()">
+    <body onload="makeWinningNumbers();makeButtons();assignEvents();updateMoney()">
+        <div id="overlay"></div>
         <div id="ticket">
+            <br>
             <p id="shownValue">$<span id="ticketValue">5</span></p>
-            <h1 id="title">Cartiology</h1><br>
-            <p>Help Carti get as many winning numbers as possible, so you can become a true King Vamp!</p>
+            <h1 id="title">Title</h1><br>
+            <p>Description</p>
             <br><hr><br>
             <p>Winning Numbers</p><br>
             <div id="winNumberZone">
@@ -18,6 +21,15 @@
             <div id="cellZone">
 
             </div>
+            <br>
+        </div>
+        <button id="refreshGame" class="endButton"><i class="fa-solid fa-arrows-rotate"></i> New Ticket</button>
+        <div id="hoverZone" class="bottomBar">
+            
+        </div>
+        <div id="info" class="bottomBar">
+            <p>I made $<span id="ticketEarned">0</span> from this ticket.</p>
+            <p>I have a total balance of $<span id="totalMoney">0</span></p>
         </div>
         <script src="index.js"></script>
     </body>
