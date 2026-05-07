@@ -9,6 +9,7 @@ function updateMoney() {
 function winStreakBar() {
     let winStreak=Number(localStorage.getItem("winStreak"))
     let winBar=document.getElementById("greenBar");
+    console.log(winStreak)
     winBar.style.width=winStreak*10 + "%";
 
     if(winStreak>10) {
@@ -45,14 +46,14 @@ function makeTicket() {
 
     for(let i=0;i<=9;i++) {
         // Defines the value a cell will have and creates the button
-        let numberToAdd=Math.floor(Math.random() * 40) + 1;
+        let numberToAdd=Math.floor(Math.random() * 60) + 1;
         let newCell=document.createElement("div");
         
         // Will eventually hold the winning cells
         let winningCells;
 
         // Gives an amount to each cell
-        let cellAmount=Math.floor(Math.random() * 20) + 1;
+        let cellAmount=Math.floor(Math.random() * 10) + 1;
 
         // Gives the button both an ID and a cell
         newCell.id=`cell${i}`;
@@ -69,6 +70,7 @@ function makeTicket() {
             }
             if(clicksLeft==0) {
                 endGame()
+                removeClickEvents()
             }
             if(winningCells==undefined) {
                 winningCells=getWinningNumbers()
@@ -127,12 +129,12 @@ function getWinningNumbers() {
 function makeWinningNumbers() {
     let alreadyUsed=[]
 
-    for(let i=0;i<5;i++) {
+    for(let i=0;i<4;i++) {
         let winningNum=document.createElement("p");
         winningNum.className="winningNumber";
-        winningNum.textContent=Math.floor(Math.random() * 40) + 1;
+        winningNum.textContent=Math.floor(Math.random() * 60) + 1;
         while(alreadyUsed.includes(winningNum.textContent)) {
-            winningNum.textContent=Math.floor(Math.random() * 40) + 1;
+            winningNum.textContent=Math.floor(Math.random() * 60) + 1;
         }
         alreadyUsed.push(winningNum.textContent)
         document.getElementById("winNumberZone").appendChild(winningNum);
@@ -144,7 +146,7 @@ function endGame() {
     let moneyMade=document.getElementById("ticketEarned");
     let ticketValue=document.getElementById("ticketValue");
     let currentWinStreak=Number(localStorage.getItem("winStreak"));
-
+    
     if(Number(moneyMade.textContent)<=Number(ticketValue.textContent)) {
         document.getElementById("ticket").style.border="red solid 5px";
         localStorage.setItem("winStreak",0);
@@ -152,6 +154,7 @@ function endGame() {
         document.getElementById("ticket").style.border="green solid 5px";
         localStorage.setItem("winStreak",currentWinStreak+1);
     }
+
     // Shows your stats
     showInfo("endGame")
 
@@ -163,4 +166,13 @@ function endGame() {
     document.getElementById("refreshGame").style.pointerEvents="all";
 
     currentValue=localStorage.getItem("totalMoney")
+    document.getElementById("totalMoney").textContent=currentValue
+}
+
+// Removes click events from scratcher cells
+function removeClickEvents() {
+    let cells=document.getElementsByClassName("ticketCell");
+    for(let i=0;i<cells.length;i++) {
+        cells[i].style.pointerEvents="none";
+    }
 }
