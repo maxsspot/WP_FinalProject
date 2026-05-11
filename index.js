@@ -1,3 +1,28 @@
+winStreakBar();
+makeWinningNumbers();
+makeTicket();
+assignEvents();
+updateMoney();
+seamlessRefresh();
+showInfo();
+
+// Attempts to do a seamless refresh
+function seamlessRefresh() {
+    let lastState=localStorage.getItem("lastState");
+    let ticket=document.getElementById("ticket")
+    if(lastState=="win") {
+        ticket.style.border="green solid 5px"
+    }else if(lastState=="loss") {
+        ticket.style.border="red solid 5px"
+    } 
+
+    setTimeout(function() {
+        ticket.style.border="transparent solid 5px"
+        document.getElementById("refreshGame").style.opacity="0"
+        hideInfo()
+    },5)
+}
+
 // Updates the total amount of money you have
 function updateMoney() {
     let currentMoney=Number(localStorage.getItem("totalMoney"))
@@ -9,7 +34,6 @@ function updateMoney() {
 function winStreakBar() {
     let winStreak=Number(localStorage.getItem("winStreak"))
     let winBar=document.getElementById("greenBar");
-    console.log(winStreak)
     winBar.style.width=winStreak*10 + "%";
 
     if(winStreak>10) {
@@ -23,9 +47,9 @@ function assignEvents() {
         showInfo()
     })
     document.getElementById("overlay").addEventListener("mouseover", function() {
-        hideInfo("assignEvents")
+        hideInfo()
     })
-    document.getElementById("refreshGame").addEventListener("click",function() {
+    document.getElementById("refreshGame").addEventListener("mouseover",function() {
         location.reload();
     })
 }
@@ -42,9 +66,9 @@ function makeTicket() {
     // The collection that holds that values for each cell, the money gained, and the clicks left
     let cellNumbers=[]
     let moneyGained=[]
-    let clicksLeft=10
+    let clicksLeft=15
 
-    for(let i=0;i<=9;i++) {
+    for(let i=0;i<=14;i++) {
         // Defines the value a cell will have and creates the button
         let numberToAdd=Math.floor(Math.random() * 60) + 1;
         let newCell=document.createElement("div");
@@ -150,9 +174,11 @@ function endGame() {
     if(Number(moneyMade.textContent)<=Number(ticketValue.textContent)) {
         document.getElementById("ticket").style.border="red solid 5px";
         localStorage.setItem("winStreak",0);
+        localStorage.setItem("lastState","loss")
     }else if(Number(moneyMade.textContent)>Number(ticketValue.textContent)) {
         document.getElementById("ticket").style.border="green solid 5px";
         localStorage.setItem("winStreak",currentWinStreak+1);
+        localStorage.setItem("lastState","win")
     }
 
     // Shows your stats
