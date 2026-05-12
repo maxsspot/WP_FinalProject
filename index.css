@@ -32,7 +32,7 @@ body {
 }
 #ticket, #winStreak {
     background-color:black;
-    width:25%;
+    width:20%;
     color:white;
     text-align:center;
     padding:20px;
@@ -50,7 +50,7 @@ body {
 #winStreak, #greenBar {
     height:40px;
     padding:0px;
-    width:25%;
+    width:20%;
     border-radius:15px;
 }
 #greenBar {
